@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>map</title>
   <script src="https://cdn.jsdelivr.net/g/modernizr@2.8.3,jquery@1.11.2"></script>
+  <script src="jquery.svg.js"></script>
+  <script src="jquery.svgdom.js"></script>
   <style>
     svg g path {fill:#ffffff;stroke:#808080;stroke-width:0.493;}
     svg g path.clicked {fill:#ccc;}
@@ -26,13 +28,12 @@
   </style>
   <script>
     jQuery(document).ready(function($){
-      var clickmark=' clicked';
+      var clickmark='clicked';
       var paths = $('svg g path').click(function(){
-        paths.each(function(){
-          this.setAttribute('class','');
-        });
-        this.setAttribute('class',clickmark);
-        var country = this.getAttribute('id');
+        var t=$(this);
+        paths.not(t).removeClass(clickmark);
+        t.addClass(clickmark);
+        var country = t.attr('id');
         $('h3').text(country);
         $('p').append($('<span />').text(' '+country));
       });
