@@ -1,4 +1,4 @@
-﻿/* http://keith-wood.name/svg.html
+/* http://keith-wood.name/svg.html
    jQuery DOM compatibility for jQuery SVG v1.5.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) April 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
@@ -9,6 +9,11 @@
 var rclass = /[\t\r\n]/g,
 	rspace = /\s+/,
 	rwhitespace = "[\\x20\\t\\r\\n\\f]";
+
+if(!$.svg) $.svg={};
+if(!$.svg.isSVGElem) $.svg.isSVGElem = function(node) {
+  return (node.nodeType === 1 && node.namespaceURI === 'http://www.w3.org/2000/svg');
+};
 
 /** Retrieve the element classes.
 	@private

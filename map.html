@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>map</title>
   <script src="https://cdn.jsdelivr.net/g/modernizr@2.8.3,jquery@1.11.2"></script>
-  <script src="jquery.svg.js"></script>
   <script src="jquery.svgdom.js"></script>
   <style>
     svg g path {fill:#ffffff;stroke:#808080;stroke-width:0.493;}
@@ -49,6 +48,13 @@
         t.addClass(clickmark);
         var country = t.attr('id');
         $('h3').text(country);
+        var additionalInfo = '';
+        try{
+          additionalInfo = 'namespaceURI=' + this.namespaceURI + ', nodeType=' + this.nodeType;
+        }catch(e){
+          additionalInfo = 'error=' + e;
+        }
+        $('.additionalInfo').text(additionalInfo);
         $('p').append($('<span />').text(' '+country));
       });
       $(window).load(function(){
@@ -68,6 +74,7 @@
   <h1>Se map...</h1>
   <h2>Browser capabilities:</h2>
   <h3>Click somewhere...</h3>
+  <div class='additionalInfo'></div>
   <div class='svg-container'>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 143 222" preserveAspectRatio="xMinYMin meet">
