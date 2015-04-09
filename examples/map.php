@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+  $githash = @shell_exec('git log -1 --pretty=format:%h')
+?><!DOCTYPE html>
 <html lang="en" class='no-js'>
   <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -71,7 +73,7 @@
   </head>
   <body>
 
-  <h1>Se map...</h1>
+  <h1>jquery.svgdom map example <?php echo $githash; ?></h1>
   <h2>Browser capabilities:</h2>
   <h3>Click somewhere...</h3>
   <div class='additionalInfo'></div>
